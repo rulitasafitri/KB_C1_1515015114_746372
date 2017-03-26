@@ -1,6 +1,6 @@
 DOMAINS % Digunakan sebagai tempat untuk inisialisasi variabel
 
-nama,jender,pekerjaan,benda,alasan,zat = symbol % dimana domain berisis nama,jender,pekerjaan,benda,alasan dan zat bertipe data symbol.symbol dipakai pada predikat yang argumennya memiliki nilai berupa kumpulan karakter yang hanya terdiri dari huruf atau kata tanpa dipisahkan oleh spasi. 
+nama,jender,pekerjaan,benda,alasan,zat = symbol % dimana domain berisi nama,jender,pekerjaan,benda,alasan dan zat bertipe data symbol.symbol dipakai pada predikat yang argumennya memiliki nilai berupa kumpulan karakter yang hanya terdiri dari huruf atau kata tanpa dipisahkan oleh spasi. 
 umur=integer %domain umur bertipe data integer. integer dipakai pada predikat yang argumennya memiliki nilai berupa bilangan bulat.
 
 PREDICATES %  Digunakan sebagai tempat untuk mendeklarasikan predikat yang ada pada bagian Predicates dan mendefinisikannya dalam bagian Clauses

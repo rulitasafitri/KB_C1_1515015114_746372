@@ -1,0 +1,160 @@
+DOMAINS      % Digunakan sebagai tempat untuk inisialisasi variabel
+
+nama,jender,pekerjaan,benda,alasan,zat = symbol  % dimana domain berisi nama,jender,pekerjaan,benda,alasan dan zat bertipe data symbol.symbol dipakai pada predikat yang argumennya memiliki nilai berupa kumpulan karakter yang hanya terdiri dari huruf atau kata tanpa dipisahkan oleh spasi. 
+umur=integer                                     %domain umur bertipe data integer. integer dipakai pada predikat yang argumennya memiliki nilai berupa bilangan bulat.
+
+PREDICATES    %  Digunakan sebagai tempat untuk mendeklarasikan predikat yang ada pada bagian Predicates dan mendefinisikannya dalam bagian Clauses
+
+nondeterm orang(nama, umur, jender, pekerjaan) % nondeterm pada section predicates berfungsi untuk memberi tahu compiler bahwa predikat tersebut mempunyai lebih dari satu solusi, predicates dengan nama orang memiliki peremeter yang di dalamnya terdapat variabel (nama,umur,jender,pekerjaan) dengan tipe data symbol untuk nama,jender,pekerjaan dan umur bertipe data integer yang sudah di inisialisasikan pada domain
+nondeterm selingkuh(nama, nama)                % nondeterm pada section predicates berfungsi untuk memberi tahu compiler bahwa predikat tersebut mempunyai lebih dari satu solusi, predicates dengan nama selingkuh memiliki parameter yang di dalamnya terdapat variabel (nama,nama) dengan tipe data symbol yang sudah di inisialisasi pada domain
+terbunuh_dengan(nama, benda)                   % predicates dengan nama terbunuh_dengan memiliki parameter yang di dalamnya terdapat variabel (nama, benda) yang bertipe data symbol yang sudah di inisialisasikan pada domain
+terbunuh(nama)                                 % predicates dengan nama terbunuh memiliki parameter yang di dalamnya terdapat variabel(nama) yang bertipe data symbol yang sudah di inisialisasikan pada domain
+nondeterm pembunuh(nama)                       %nondeterm pada section predicates berfungsi untuk memberi tahu compiler bahwa predikat tersebut mempunyai lebih dari satu solusi, predicates dengan nama pembunuh memiliki parameter yang di dalamnya terdapat variabel (nama) dengan tipe data symbol yang sudah di inisialisasikan pada domain
+motif(alasan)                                  % predicates dengan nama motif memiliki parameter yang di dalamnya terdapat variabel (alasan) yang bertipe data symbol yang sudah di inisialisasikan pada domain
+ternodai(nama, zat)                            % predicates dengan nama ternodai memiliki parameter yang di dalamnya terdapat variabel (nama,zat) yang bertipe data symbol yang sudah di inisialisasikan pada domain
+milik(nama, benda)                             % predicates dengan nama milik memiliki parameter yang di dalamnya terdapat variabel (nama ,benda) yang bertipe data symbol yang sudah di inisialisasikan pada domain
+nondeterm cara_kerja_mirip(benda, benda)       % nondeterm pada section predicates berfungsi untuk memberi tahu compiler bahwa predikat tersebut mempunyai lebih dari satu solusi, perdicates dengan nama cara_kerja_mirip memiliki parameter yang di dalamnya terdapat variabel (benda,benda) yang bertipe data symbol yang sudah di inisialisasikan pada domain
+nondeterm kemungkinan_milik(nama, benda)       % nondeterm pada section predicates berfungsi untuk memberi tahu compiler bahwa predikat tersebut mempunyai lebih dari satu solusi, predicates dengan nama kemungkinan_milik memiliki parameter yang di dalmnya terdapat varibel (nama,benda) yang bertipe data symbol yang sudah di inisialisasikan pada domain
+nondeterm dicurigai(nama)                      % nondeterm pada section predicates berfungsi untuk memberi tahu compiler bahwa predikat tersebut mempunyai lebih dari satu solusi predicates dengan nama di curigai memiliki variabel yang di dalamnya terdapat variabel (nama) yang bertipe data symbol yang sudah di inisialisasikan pada domain
+
+CLAUSES % Digunakan sebagai tempat untuk meletakkan fakta dan aturan   
+
+% --- FAKTA --- %
+
+orang(budi,55,m,tukang_kayu).       % predikat orang(nama,umur,jender,pekerjaan) /orang nama = budi, umur = 55, jender = m dan pekerjaan = tukang_kayu / orang dengan nama budi umurnya 55 dengan jender m dan pekerjaan sebagai tukang kayu
+orang(aldi,25,m,pemain_sepak_bola). % predikat orang(nama,umur,jender,pekerjaan) /orang nama = aldi, umur = 25, jender = m, pekerjaan = pemain_sepak_bola /orang dengan nama aldi umur 25 dengan jender m dan pekerjaan sebagai pemain sepak bola
+orang(aldi,25,m,tukang_jagal).      % predikat orang(nama,umur,jender,pekerjaan) /orang nama = aldi, umur = 25, jender = m, pekerjaan = tukang_jagal / orang dengan nama aldi umur 25 dengan jender m dan pekerjaan sebagai tukang jagal
+orang(joni,25,m,pencopet).          % predikat orang(nama,umur,jender,pekerjaan) /orang nama = joni, umur = 25, jender = m, pekerjaan = pencopet / orang dengan nama joni umur 25 dengan jender m dan pekerjaan sebagai pencopet
+
+selingkuh(ina,joni). % predikat selingkuh(nama,nama) /selingkuh nama = ina dan nama = joni  /ina selingkuh dengan joni
+selingkuh(ina,budi). % predikat selingkuh(nama,nama) /selingkuh nama = ina dan nama = budi  /ina selingkuh dengan budi
+selingkuh(siti,joni).% predikat selingkuh(nama,nama) /selingkuh nama = siti dan nama = joni /siti selingkuh dengan joni
+
+terbunuh_dengan(siti,pentungan). % predikat terbunuh_dengan(nama,benda)/ terbunuh_dengan nama = siti , benda = pentungan / siti terbunuh dengan pentungan
+
+terbunuh(siti). % predikat terbunuh(nama) /terbunuh nama = siti / siti yang terbunuh
+
+motif(uang).    % predikat motif(alasan) /motif alasan = uang    / uang adalah motif terbunuhnya siti
+motif(cemburu). % predikat motif(alasan) /motif alasan = cemburu / cemburu adalah motif terbunuhnya siti
+motif(dendam).  % predikat motif(alasan) /motif alasan = dendam  / dendam adalah motif terbunuhnya siti
+
+ternodai(budi, darah). % predikat ternodai(nama,zat) /ternodai nama = budi, zat = darah  / budi ternodai darah
+ternodai(siti, darah). % predikat ternodai(nama,zat) /ternodai nama = siti, zat = darah  / siti ternodai darah
+ternodai(aldi, lumpur).% predikat ternodai(nama,zat) /ternodai nama = aldi, zat = lumpur / aldi ternodai lumpur
+ternodai(joni, coklat).% predikat ternodai(nama,zat) /ternodai nama = joni, zat = coklat / joni ternodai coklat
+ternodai(ina, coklat). % predikat ternodai(nama,zat) /ternodai nama = ina,  zat = coklat / budi ternodai coklat
+
+milik(budi,kaki_palsu).% predikat milik(nama,benda) /milik nama = budi,  benda = kaki_palsu /budi memiliki kaki palsu 
+milik(joni,pistol).    % predikat milik(nama,benda) /milik nama = joni,  benda = pistol     /joni memiliki pistol
+
+cara_kerja_mirip(kaki_palsu, pentungan). % predikat cara_kerja_mirip(benda,benda) /cara_kerja_mirip benda = kaki_palsu,  benda = pentungan / kaki palsu  cara kerja mirip dengan pentungan
+cara_kerja_mirip(balok, pentungan).      % predikat cara_kerja_mirip(benda,benda) /cara_kerja_mirip benda = balok,       benda = pentungan / balok       cara kerja mirip dengan pentungan
+cara_kerja_mirip(gunting, pisau).        % predikat cara_kerja_mirip(benda,benda) /cara_kerja_mirip benda = gunting,     benda = pisau     / gunting     cara kerja mirip dengan pisau
+cara_kerja_mirip(sepatu_bola, pentungan).% predikat cara_kerja_mirip(benda,benda) /cara_kerja_mirip benda = sepatu_bola, benda = pentungan / sepatu bola cara kerja mirip dengan pentungan
+
+
+% --- ATURAN --- %
+
+% Nb : 
+%      (:-)              jika 
+%      (<>)              tidak sama dengan
+%      (,)               dan
+%      (;)               atau
+%      (_)               mengabaikan variabel yang tidak igin di tampilkan 
+%      (X,Benda,Senjata,Lakilaki,Pembunuh,Zat) variabel yang merupakan sebuah interpretasi yang digunakan untuk menemukan nilai dari sebuah klausa, Variabel harus diawali dengan huruf besar
+ 
+kemungkinan_milik(X,sepatu_bola):-  % predikat kemungkinan_milik(nama,benda)     /kemungkinan_milik nama= X, benda = sepatu_bola 
+orang(X,_,_,pemain_sepak_bola).     % predikat orang(nama,umur,jender,pekerjaan) /orang nama = X umur = _ , jender = _ , pekerjaan = pemain_sepak_bola
+				    % X kemungkinan memiliki sepatu bola jika X seorang pemain bola
+
+kemungkinan_milik(X,gunting):-      % predikat kemungkinan_milik(nama,benda)     /kemungkinan_milik nama= X, benda = gunting  
+orang(X,_,_,pekerja_salon).         % predikat orang(nama,umur,jender,pekerjaan) /orang nama = X umur = _ , jender = _ , pekerjaan = pekerja_salon
+			            % X kemungkinan memiliki gunting jika X seorang pekerja salon
+
+kemungkinan_milik(X,Benda):-        % predikat kemungkinan_milik(nama,benda) /kemungkinan_milik nama= X, benda = Benda  
+milik(X,Benda).                     % predikat milik(nama,benda)             /orang nama = X benda = Benda
+                                    % X kemungkinan memiliki Benda jika X memiliki benda tersebut
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+* dicurigai semua orang yang memiliki senjata yang *
+* kerjanya mirip dengan senjata penyebab siti terbunuh. *
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+
+dicurigai(X):-                  % X di curigai jika
+terbunuh_dengan(siti,Senjata) , % siti terbunuh dengan Senjata
+
+cara_kerja_mirip(Benda,Senjata) , % Benda yang cara kerjanya mirip Senjata
+kemungkinan_milik(X,Benda).       % X kemungkinan memiliki Benda tersebut
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * *
+* dicurigai laki-laki yang selingkuh dengan siti. *
+* * * * * * * * * * * * * * * * * * * * * * * * * */
+
+dicurigai(X):-    % X dicurigai jika
+motif(cemburu),   % cemburu adalah motifnya dan
+orang(X,_,m,_),   % X adalah orang dengan jender m
+selingkuh(siti,X).
+
+/* * * * * * * * * * * * * * * * * * * * * * *
+* dicurigai perempuan yang selingkuh dengan *
+* laki-laki yang juga selingkuh dengan siti *
+* * * * * * * * * * * * * * * * * * * * * * */
+
+dicurigai(X):-            % X di curigai jika 
+motif(cemburu),           % cemburu adalah motifnya dan
+orang(X,_,f,_),           % X adalah orang dengan jender f dan
+selingkuh(X,Lakilaki),    % X selingkuh dengan Lakilaki dan
+selingkuh(siti,Lakilaki). %siti selingkuh dengan Lakilaki
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * *
+* dicurigai pencopet yang mempunyai motif uang. *
+* * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+dicurigai(X):-            % X di curigai jika
+motif(uang),              % uang adalah motifnya dan
+orang(X,_,_,pencopet).    % X adalah orang yang pekerjaannya pencopet
+
+pembunuh(Pembunuh):-      % Pembunuh adalah pembunuh jika 
+orang(Pembunuh,_,_,_),    % Pembunuh adalah orang dan
+terbunuh(Terbunuh),       % Terbunuh telah terbunuh dan
+Terbunuh <> Pembunuh,     % Terbunuh tidak sama dengan Pembunuh /* Bukan bunuh diri */
+dicurigai(Pembunuh),      % Pembunuh di curigai dan
+ternodai(Pembunuh,Zat),   % Pembunuh ternodai Zat dan
+ternodai(Terbunuh,Zat).   % Terbunuh ternodai Zat
+
+GOAL % sama dengan body dari sebuah aturan, tujuan akhir
+
+pembunuh(X).  % X adalah pembunuhnya
+
+
+
+ANALISIS
+Pada Goal pembunuh(X), akan dicari pembunuh dengan variabel X. Program akan mencari dengan CLAUSA pembunuh(Pembunuh). Variabel X pada Goal akan di unifikasi ke dalam variabel Pembunuh. Kemudian, akan mencari pembunuh dengan mengecek setiap aturan dan fakta.
+
+pembunuh(Pembunuh). 
+1.	Aturan pertama. Dikatakan Pembunuh jika Pembunuh adalah orang. Program akan mengecek siapa saja orang yang terdapat dalam fakta, kemudian ditemukan yang termasuk dalam orang adalah budi 55thn laki-laki tukang kayu, aldi 25thn laki-laki pemain bola, aldi 25thn laki-laki tukang jagal dan joni 25thn laki-laki pencopet. Karena budi adalah fakta pertama, jadi budi diunifikasi kedalam Pembunuh. Aturan ini telah terpenuhi. Kemudian program akan mengecek aturan kedua.
+2.	Aturan kedua. Dikatakan Pembunuh jika Pembunuh adalah orang dan yang Terbunuh bukan Pembunuh (bunuh diri). Kemudian ditemukan fakta bahwa yang terbunuh adalah siti. Aturan ini telah terpenuhi. Kemudian program akan mengecek aturan ketiga.
+3.	Aturan ketiga. Dikatakan Pembunuh jika Pembunuh adalah orang yang berbeda dengan Terbunuh. Pada fakta sebelumnya, orang yang memungkinkan untuk menjadi Pembunuh adalah budi, aldi dan Joni sedangkan Terbunuh adalah siti dimana siti adalah selingkuhan joni sedangkan joni adalah selingkuhan ina dan ina selingkuhan budi. Aturan ini telah terpenuhi. Kemudian program akan mengecek aturan keempat.
+4.	Aturan keempat. Dikatakan Pembunuh jika Pembunuh dicurigai. Kemudian program akan menjalankan aturan dicurigai(X). 
+5.	Dicurigai(X) pertama.
+ 
+	a.	Aturan pertama. X dicurigai jika siti terbunuh dengan Senjata. Dengan aturan ini, X diunifikasi kedalam variabel siti. Dimana dalam fakta siti terbunuh dengan pentungan. Senjata telah ditemukan. Aturan telah terpenuhi. Program akan melanjutkan ke aturan selanjutnya.
+	b.	Aturan kedua. X dicurigai jika cara kerja benda mirip dengan Senjata. Pada fakta dan aturan sebelumnya ditemukan Senjata adalah pentungan. Program akan mengecek Benda yang cara kerjanya mirip dengan pentungan. Dalam fakta Benda yang cara kerjanya mirip dengan pentungan adalah kaki palsu, karena kaki palsu adalah fakta pertama maka kaki palsu diunifikasi ke dalam variabel Benda. Aturan telah terpenuhi. Program akan melanjutkan ke aturan selanjutnya.
+	c.	Aturan ketiga. X dicurigai jika X kemungkinan memiliki Benda. Dalam fakta dan aturan sebelumnya Benda adalah kaki palsu. Program akan mengecek dalam fakta orang yang kemungkinan memiliki kaki palsu. Dimana dalam fakta, X kemungkinan memiliki Benda jika X memiliki Benda tersebut. Dalam fakta sebelumnya Benda adalah kaki palsu kemudian dalam fakta budi memiliki kaki palsu. Maka dapat disimpulkan bahwa budi kemungkinan memiliki kaki palsu. Kemudian budi diunifikasi kedalam variabel X dan kaki palsu diunifikasi kedalam variabel Benda. Aturan telah terpenuhi. Program akan melanjutkan ke aturan selanjutnya.
+	d.	Karena dalam predicates dicurigai lebih dari satu maka program melanjutkan pembuktian bahwa budi adalah X atau menemukan X dicurigai lainnya.
+	e.	Dicurigai(X) kedua. Aturan pertama. Membuktikan budi adalah X serta mencari yang dicurigai lainnya dengan aturan X dicurigai jika motif adalah cemburu. Program akan mengecek fakta, dan motif cemburu ada dalam fakta. Aturan terpenuhi. Program akan melanjutkan ke aturan selanjutnya.
+	f.	Aturan kedua. Dalam aturan ini budi dicurigai jika budi adalah orang yang berjenis kelamin laki-laki. Dalam fakta dan aturan sebelumya, budi berjenis kelamin laki-laki. Aturan terpenuhi. Program akan melanjutkan ke aturan selanjutnya.
+	g.	Aturan ketiga. Dalam aturan ini budi dicurigai jika siti selingkuh dengan budi. Dalam fakta, budi tidak berselingkuh dengan siti. Aturan ini tidak terpenuhi, maka dilakukan lacakbalik. Program akan kembali ke aturan sebelumnya dimana mencari orang yang berjenis kelamin laki-laki selain budi. Dalam fakta orang yang berjenis kelamin laki-laki setelah budi adalah aldi. Program akan mengecek kembali apakah siti selingkuh dengan aldi. Ternyata tidak, dilakukan kembali lacakbalik mencari orang yang berjenis kelamin laki-laki selain budi dan aldi. Dalam fakta orang yang berjenis kelamin laki-laki selain budi dan aldi adalah joni. Kemudian joni diunifikasi kedalam variabel X lalu program akan menjalankan aturan selanjutnya, mengecek apakah siti selingkuh dengan joni. Dalam aturan benar bahwa siti selingkuh dengan joni. Dengan ini maka joni diunifikasi kedalam variabel X dicurigai. Maka orang yang dicurigai adalah budi(aturan dicurigai sebelumya) dan joni. Aturan telah terpenuhi. Program akan melanjutkan ke aturan 		selanjutnya. 
+	h.	Setelah mendapatkan orang yang dicurigai adalah budi dan joni melalui aturan yang berbeda. Program mencari orang yang dicurigai lainnya.
+	i.	Dicurigai(X) ketiga. Aturan ketujuh. Dalam aturan ini X dicurigai jika motif adalah cemburu. Program akan mengecek apakah terdapat fakta. Dalam fakta benar adanya motif karena cemburu. Aturan terpenuhi. Program akan melanjutkan ke aturan selanjutnya.
+	j.	Aturan pertama. Dalam aturan ini, X dicurigai jika X adalah orang yang berjenis kelamin perempuan. Program akan mencari orang yang berjenis kelamin perempuan. Karena dalam fakta tidak terdapat orang yang berjenis kelamin perempuan, maka aturan ini tidak terpenuhi. Dan karena dalam aturan ini menggunakan “dan” maka aturan selanjutnya tidak bisa dijalankan. Program melanjutkan ke pencarian orang yang dicurigai selanjutnya.
+	k.	Dicurigai(X) keempat. Aturan pertama. Dalam aturan ini X dicurigai jika motif adalah uang. Program akan mengecek apakah terdapat motif karena uang. Dalam fakta terdapat motif karena uang. Aturan telah terpenuhi. Program akan melanjutkan ke aturan selanjutnya. 
+	l.	Aturan kedua. X dicurigai jika X adalah seorang pencopet. Program akan mengecek terdapat orang yang berprofesi pencopet. Dalam fakta orang yang berprofesi sebagai pencopet adalah joni. maka joni diunifikasi kedalam variabel X. Aturan terpenuhi. 
+	m.	Sampai saat ini orang yang dicurigai adalah budi dan joni. Program akan melanjutkan ke pencarian pembunuh dengan dicurigai adalah budi dan joni.
+
+6.	Aturan kelima. Dikatakan Pembunuh jika Pembunuh ternodai Zat. Karena Pembunuh adalah budi dan joni, maka program akan mencari Zat yang menodai budi dan joni. Dalam fakta budi ternodai oleh darah, dan joni ternodai coklat maka darah dan coklat di unifikasi ke dalam variabel Zat. Aturan terpenuhi. Program akan melanjutkan ke aturan selanjutnya.
+7.	Aturan keenam. Dalam aturan ini Pembunuh dikatakan pembunuh jika Terbunuh ternodai Zat. Dalam aturan dan fakta sebelumnya ditemukan bahwa Terbunuh adalah siti dan Zat adalah darah dan coklat. Maka program akan mengecek apakah benar siti ternodai darah atau coklat. Berdasarkan fakta adalah benar siti ternodai darah bukan coklat. Aturan terpenuhi. 
+8.	Maka dapat disimpulkan bahwa Pembunuh adalah budi. 
+
+

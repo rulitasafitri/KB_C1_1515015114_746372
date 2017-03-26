@@ -123,6 +123,6 @@ dicurigai(Pembunuh),% Pembunuh di curigai dan
 ternodai(Pembunuh,Zat),% Pembunuh ternodai Zat dan
 ternodai(Terbunuh,Zat). % Terbunuh ternodai Zat
 
-GOAL %
+GOAL % sama dengan body dari sebuah aturan, tujuan akhir
 
-pembunuh(X).
+pembunuh(X).% X adalah pembunuhnya
